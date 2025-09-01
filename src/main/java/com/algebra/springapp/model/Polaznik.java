@@ -14,6 +14,7 @@ import lombok.Setter;
 public class Polaznik {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "PolaznikID")
     private Long polaznikId;
 
     @NotBlank @Size(max = 100)

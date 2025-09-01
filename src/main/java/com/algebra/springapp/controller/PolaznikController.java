@@ -16,9 +16,11 @@ public class PolaznikController {
     public PolaznikController(PolaznikService service) { this.service = service; }
 
     @GetMapping
+    @ResponseStatus(HttpStatus.OK)
     public List<Polaznik> all() { return service.findAll(); }
 
     @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public Polaznik one(@PathVariable Long id) { return service.findById(id); }
 
     @PostMapping
@@ -27,6 +29,7 @@ public class PolaznikController {
     public Polaznik create(@Valid @RequestBody Polaznik p) { return service.save(p); }
 
     @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
     @PreAuthorize("hasRole('ADMIN')")
     public Polaznik update(@PathVariable Long id, @Valid @RequestBody Polaznik p) {
         p.setPolaznikId(id);
